@@ -13,17 +13,17 @@ source:
 
 build:
   noarch: python
-  number: 1
+  number: 2
   script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   host:
     - pip
-    - python
+    - python {{ python_min }}
     - markupsafe >=0.9.2
   run:
     - markupsafe >=0.9.2
-    - python
+    - python >={{ python_min }}
 
 test:
   imports:
@@ -34,6 +34,7 @@ test:
     - nose
     - routes
     - webob
+    - python {{ python_min }}
 
 about:
   home: "http://webhelpers.groovie.org/"
